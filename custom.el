@@ -19,7 +19,7 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 
 (add-hook 'ruby-mode-hook
-                    (lambda () (run-hooks 'abg-code-modes-hook)))
+                    (lambda () (run-hooks 'vlyrs-code-modes-hook)))
 
 ;;; Store emacs-server pid
 
