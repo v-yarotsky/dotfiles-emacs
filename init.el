@@ -35,11 +35,8 @@
         (add-to-list 'load-path name)))))
 
 (let ((plugin-settings "~/.emacs.d/plugin-settings"))
-  (dolist (f (directory-files plugin-settings))
-    (let ((name (concat plugin-settings "/" f)))
-      (when (and (not (equal f ".."))
-                 (not (equal f ".")))
-        (load name)))))
+  (dolist (f (directory-files plugin-settings t "\.el$"))
+    (load f)))
 
 (load "~/.emacs.d/custom.el")
 

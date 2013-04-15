@@ -25,11 +25,11 @@
 
 (setq pidfile "/tmp/emacs-server.pid")
 (add-hook 'emacs-startup-hook
-            (lambda ()
-                  (with-temp-file pidfile
-                                        (insert (number-to-string (emacs-pid))))))
+          (lambda ()
+            (with-temp-file pidfile
+                            (insert (number-to-string (emacs-pid))))))
 (add-hook 'kill-emacs-hook
-             (lambda ()
-                   (when (file-exists-p pidfile)
-                           (delete-file piddfile))))
+           (lambda ()
+             (when (file-exists-p pidfile)
+               (delete-file pidfile))))
 
