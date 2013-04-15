@@ -15,6 +15,8 @@
                       color-theme-sanityinc-tomorrow
                       color-theme-monokai
                       color-theme-dawn-night
+                      ruby-test-mode
+                      rvm
                       yasnippet)
   "A list of packages to ensure are installed at launch")
 
@@ -32,18 +34,12 @@
                  (not (equal f ".")))
         (add-to-list 'load-path name)))))
 
-(require 'evil)
-(evil-mode 1)
+(let ((plugin-settings "~/.emacs.d/plugin-settings"))
+  (dolist (f (directory-files plugin-settings))
+    (let ((name (concat plugin-settings "/" f)))
+      (when (and (not (equal f ".."))
+                 (not (equal f ".")))
+        (load name)))))
 
-(require 'powerline)
-(powerline-default-theme)
-
-(require 'color-theme-sanityinc-tomorrow)
-(color-theme-sanityinc-tomorrow-night)
-
-(require 'surround)
-(global-surround-mode 1)
-
-(require 'yasnippet)
-(yas-global-mode 1)
+(load "~/.emacs.d/custom.el")
 
